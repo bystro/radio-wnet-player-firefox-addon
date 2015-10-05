@@ -1,0 +1,251 @@
+ *{
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+#wnet {
+    width: 335px;
+    height: 440px;
+    background: #fff;
+}
+
+#wnet p, #wnet span {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;    
+}
+
+#wnet a, #wnet a:hover, #wnet a:active, #wnet a:visited{
+    color: #000;
+    text-decoration: none;
+}
+
+#wnet a {
+    text-decoration: none;
+}
+
+#wnet a:hover {
+    text-decoration: underline;
+}
+
+#wnet .wrap{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+#wnet .header{
+    width: 100%;
+    height: 24px;
+    background: url(head.png) no-repeat right top;
+    position: relative;
+    text-align: left;
+}
+
+#wnet .header-bg{
+    position: absolute;
+    width: 100%;
+    height: 8px;
+    top: 0;
+    background: #ffab00;
+}
+
+#wnet .title, #wnet .list-inside-title p, #wnet .title span{
+    color: #ff8c00;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+#wnet .header p.title{
+    padding-top: 14px;
+    margin-left: 3.6%;
+}
+
+#wnet .header span.info{
+    position: absolute;
+    right:8px;
+    top:8px;
+    color: #fff;
+    font-weight: 600;
+
+}
+
+#wnet .list{
+    width: 92.8%;
+    height: 80px;
+    margin-top: 10px;
+    margin-left: 3.6%;
+    margin-left: 3.6%;
+    display: table;
+}
+
+#wnet .el-header {
+    height: 40px;
+    background: #e5e5e5;
+    /*margin-bottom: 8px;*/
+    margin: 0;
+    position: relative;
+}
+
+#wnet .el-header a{
+    height: 100%;
+    width: 100%;
+    display: table-cell;
+    vertical-align: middle;
+
+}
+
+#wnet .el-link{
+ z-index: 1;
+}
+
+
+
+#wnet .el-header p {
+    margin: 0;
+    text-align: left;
+    padding-left: 105px;
+    padding-top: 1px;
+
+    height:40px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#wnet .el-header .el-bt, #wnet .el-header .el-img{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    display: block;
+    z-index: 2;
+}
+
+#wnet .el-header .el-bt{
+    width: 37px;
+    left: 0;
+    background: url(play.png) no-repeat 50% 50%;
+    cursor: pointer;
+    cursor: hand;
+}
+
+#wnet .el-bt-bg{
+  width: 37px;
+  position: absolute;
+  top: 0;
+  left:0;
+  height: 100%;
+  z-index: 1;
+  background: url(el-bg.jpg) repeat-y left top;
+}
+
+#wnet .list-el-first .el-bt-bg{
+  background: url(el-bg.jpg) repeat-y left top;
+}
+
+#wnet .el-header .el-bt-img{
+    position: absolute;
+    z-index: 2;
+    left: 37px;
+    top: 0;
+    width: 44px;
+}
+
+
+#wnet .list-el .el-header {
+    margin-top: 9px;
+}
+
+#wnet .list-el-first .el-header {
+    margin:0;
+}
+
+#wnet .list-el-first .el-header p{
+    color: #000;
+    font-size: 12px;            
+    text-align: left;
+    padding: 0 0 0 50px;
+    height:40px;
+    display: table-cell;
+    vertical-align: middle;
+
+}
+
+#wnet .el-first-content p, #wnet .el-first-content span {
+    font-size: 12px;
+    margin: 2px 0 2px 0;
+}
+
+#wnet .el-first-content p.el-first-content-title, #wnet .el-first-content p.el-first-content-title span{
+    font-weight: 600;
+}
+
+#wnet .el-first-content p.el-first-content-text{
+    font-style:  italic;
+}
+
+#wnet .el-first-content p.el-first-content-link a {
+    font-style:  italic;    
+    color: #ffab00;
+    font-size: 12px;
+    margin-top: 12px;
+    display: block;
+}
+
+
+#wnet .el-first-content {
+    margin-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    border-bottom: 1px solid #e5e5e5;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+#wnet .el-first-content p {
+    text-align: left;
+}
+
+#wnet .list-inside-title{
+
+}
+
+#wnet .list-inside-title p{
+    margin: 10px 0 1px 3px;
+    text-align: left; 
+}
+
+#wnet .footer{
+    margin-left: 3.6%;
+    width: 92.8%;
+}
+
+#wnet .footer p{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#wnet .footer-link a{
+    color: #ffab00;
+    font-size: 13px;    
+}
+
+#wnet .footer-info p{
+    color: #ff0086;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+    padding-left: 3px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.audio_container {
+    width:100%; 
+    height:36px;
+    display:none;
+}
+
+.audio {
+    height: 100%;
+    width: 100%;
+}

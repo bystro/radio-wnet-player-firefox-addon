@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">        
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+
+        <link href="style.css" rel="stylesheet" />
+
+        <script type="text/javascript">
+
+            function playOnlineStream() {
+                //$("#player").html('<object data="http://audio.radiownet.pl:8000/stream" style="width:100%; height:40px;"></object>');
+
+                audioInterfaceState();
+
+                $("#online_stream_player_container").html('<audio id="online" class="audio" controls autoplay preload="none"><source id="wnetPlayer_src" src="http://audio.radiownet.pl:8000/stream">Twoja przeglądarka nie obsługuje strumienia. Zaktualizuj przeglądarkę do nowszej wersji.</audio>');
+                $("#online_stream_player_container").show();
+
+            }
+
+
+            function playOnlinePodcast(url, id) {
+                //$("#player").html('<object data="'+url+'" style="width:100%; height:40px;"></object>');
+
+                audioInterfaceState();
+
+                $("#podcast_player_container"+id).html('<audio id="podcast'+id+'" class="audio" controls autoplay preload="none"><source id="wnetPlayer_src" src="'+url+'">Twoja przeglądarka nie obsługuje strumienia. Zaktualizuj przeglądarkę do nowszej wersji.</audio>');
+                $("#podcast_player_container"+id).show();
+
+            }
+
+            function audioInterfaceState() {
+
+                $( ".audio_container" ).each(function( index ) {
+                    $( this ).html('');
+                    $( this ).hide();
+                });
+
+            }
+
+            function playInterfaceState(activeItem) {
+                var strItemDefaultBackgroundImage1 = 'url("el-bg.jpg")';
+                var strItemDefaultBackgroundImage2 = 'url("play.png")';
+
+
+                $( ".el-bt-bg" ).each(function( index ) {
+                    $( this ).css('background-image', strItemDefaultBackgroundImage1);
+
+                    $( this ).children('.el-bt').css('background-image', strItemDefaultBackgroundImage2);
+
+                });                
+
+                activeItem.css('background-image', 'url("el-first-bg.jpg")');
+                activeItem.children('.el-bt').css('background-image', 'url("play_down.png")');
+                //alert(activeItem);
+
+            }
+
+    </script>
+
+    </head>
+
+    <body>
+        <div id="wnet">
+            <div class='wrap'>
+                <div class='header'>
+                    <div class='header-bg'></div>
+                    <span class='info'>WNET online</span>
+                    <p class='title'>AKTUALNIE NA ANTENIE OD <span id="currentBroadCastStartFormatted">0:00</span></p>
+                </div>
+                <div class='list'>
+                    <div class="list-el list-el-first">
+                        <div class="el-header">
+                          <div class="el-bt-bg" id="el-bt-bg1" onclick="playOnlineStream(); playInterfaceState( $(this) )"><div class="el-bt"></div></div>
+                          <!--<a href="#" class="el-link">-->
+                            <p id="currentBroadCastInfo">...</p>
+                          <!--</a>-->
+                        </div>
+                        <div id="online_stream_player_container" class="audio_container"></div>
+
+                        <div class="el-first-content">
+                            <p class="el-first-content-title">Następna audycja od <span id="nextBroadCastStartFormatted">0:00</span></p>
+                            <p class="el-first-content-text" id="nextBroadCastInfo">tytul nastepnej audycji</p>
+                            <p class="el-first-content-link"><a href="http://www.radiownet.pl/program">Zobacz pełną ramówkę</a></p>
+                        </div>
+                    </div>
+                    <div class='list-inside-title'>
+                        <p>Poranki WNET</p>
+                    </div>
+
+                    <div id="lastFavouriteBroadcasts"> </div>
+
+                    <!--<div class="list-el">
+                        <div class="el-header">
+                            <div class="el-bt-bg" onclick="playOnlineStream(); playInterfaceState( $(this) )"><div class="el-bt"></div></div>                               
+                                <a href="#link 2" class="el-bt-img"><img class="el-img" src="icon-32.png" /></a>                                
+                                <p> <a href="#link 3" class="el-link">Poranek 14 sierpnia z Sejn<br />14.08.2015, 7.45</a></p>
+                                            
+                        </div>
+                    </div>-->
+
+                    
+                </div>
+                <div class='footer'>
+                    <div class='footer-link'> 
+                    <p><a href="http://www.radiownet.pl/etery/poranki">Zobacz pełną listę poranków</a></p>
+                    </div>                    
+
+                     <!-- Player -->
+                     <!--<div id="player" style="width:100%; height:40px; margin-top:20px;">  </div>   -->
+
+                </div>        
+            </div>
+        </div>
+    </body>
+
+
+<!--
+<script type="text/javascript">
+
+    $( window ).load(function() {
+        $("#el-bt-bg1").attr('title','mandatory');
+
+        //var el = document.querySelector(".el-bt-bg");
+        //el.setAttribute("title", "jazda");
+
+    });         
+
+</script>
+-->
+
+</html>
