@@ -1,9 +1,9 @@
 {
   "name": "radio-wnet",
-  "title": "Radio WNET",
+  "title": "Radio WNET Player",
   "id": "ec8030f7-c20a-464f-9b0e-13a3a9e97384",
-  "description": "Radio WNET online",
+  "description": "Rozszerzenie do słuchania Radia Wnet online z listą ostatnich Poranków WNET.",
   "author": "Krzysztof Kubacki",
   "license": "MPL 2.0",
-  "version": "1.0"
+  "version": "1.0.1"
 }

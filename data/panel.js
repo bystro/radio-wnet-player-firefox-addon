@@ -3,15 +3,19 @@ self.port.on('updateCurrentBroadcastInfo', function (strCurrentBroadcastInfo) {
 
 	  var jsonObject = JSON.parse(strCurrentBroadcastInfo);    
 
-    var currentBroadCastInfo = document.getElementById('currentBroadCastInfo');
-    currentBroadCastInfo.innerHTML = jsonObject.broadcasts[0].title;
-    var currentBroadCastStartFormatted = document.getElementById('currentBroadCastStartFormatted');
-    currentBroadCastStartFormatted.innerHTML = jsonObject.broadcasts[0].start_formatted;
+    //var currentBroadCastInfo = document.getElementById('currentBroadCastInfo');
+    //currentBroadCastInfo.innerHTML = jsonObject.broadcasts[0].title;
+    $('#currentBroadCastInfo').text(jsonObject.broadcasts[0].title);
+    //var currentBroadCastStartFormatted = document.getElementById('currentBroadCastStartFormatted');    
+    //currentBroadCastStartFormatted.innerHTML = jsonObject.broadcasts[0].start_formatted;
+    $('#currentBroadCastStartFormatted').text(jsonObject.broadcasts[0].start_formatted);
 
-    var nextBroadCastInfo = document.getElementById('nextBroadCastInfo');
-    nextBroadCastInfo.innerHTML = jsonObject.broadcasts[1].title;
-    var nextBroadCastStartFormatted = document.getElementById('nextBroadCastStartFormatted');
-    nextBroadCastStartFormatted.innerHTML = jsonObject.broadcasts[1].start_formatted;
+    //var nextBroadCastInfo = document.getElementById('nextBroadCastInfo');
+    //nextBroadCastInfo.innerHTML = jsonObject.broadcasts[1].title;
+    $('#nextBroadCastInfo').text(jsonObject.broadcasts[1].title);
+    //var nextBroadCastStartFormatted = document.getElementById('nextBroadCastStartFormatted');
+    //nextBroadCastStartFormatted.innerHTML = jsonObject.broadcasts[1].start_formatted;
+    $('#nextBroadCastStartFormatted').text(jsonObject.broadcasts[1].start_formatted);
 
 });
 
@@ -48,27 +52,30 @@ self.port.on('updateLastFavouriteBroadcasts', function (strLastFavouriteBroadcas
     var jsonObject = JSON.parse(strLastFavouriteBroadcasts);
 
     var strLastFavouriteBroadcastsHTML = '';    
-    for (i=0; i<jsonObject.broadcasts.length; i++) {
+    for (i=0; i<3; i++) {
 
-      /* Kod HTML interfejse uruchamiajacego podcast audycji */
-      //var strLastFavouriteBroadcastsItemPlayHTML = '<div class="lastFavouriteBroadcastsItemPlay" onclick="playOnlinePodcast(\''+jsonObject.broadcasts[i].audio_file_name+'\');playInterfaceState( $(this) );" title="Posłuchaj teraz"></div>';
-      var strLastFavouriteBroadcastsItemPlayHTML = '<div class="el-bt-bg" onclick="playOnlinePodcast(\''+jsonObject.broadcasts[i].audio_file_name+'\', '+jsonObject.broadcasts[i].id+');playInterfaceState( $(this) );" title="Posłuchaj teraz"><div class="el-bt"></div></div>';
+      /* Kod HTML interfejse uruchamiajacego podcast audycji */      
+      //var strLastFavouriteBroadcastsItemPlayHTML = '<div class="el-bt-bg" podcast-id="1" onclick="playOnlinePodcast( $(this) ); playInterfaceState( $(this) );" title="Posłuchaj teraz"><div class="el-bt"></div></div>';
+      //var strLastFavouriteBroadcastsItemPlayHTML = '<div id="podcast_data'+i+'" podcast-url="'++'"></div>';
 
-      /* Kod HTML z avatarem audycji  */
-      //var strLastFavouriteBroadcastsItemLeftHTML = '<div class="lastFavouriteBroadcastsItemLeft"> ' + strLastFavouriteBroadcastsItemSubpageHTML1 + ' <img src="'+jsonObject.broadcasts[i].avatar_file_name+'" border="0" class="lastFavouriteBroadcastsImage" /> ' + strLastFavouriteBroadcastsItemSubpageHTML2 + ' </div>';
-      var strLastFavouriteBroadcastsItemLeftHTML = '<a href="'+ jsonObject.broadcasts[i].url +'" class="el-bt-img"><img src="'+jsonObject.broadcasts[i].avatar_file_name+'" class="el-img" border="0" /></a>';
-
-      /* Kod HTML z tytułem i datą audycji */
-      var strLastFavouriteBroadcastsItemRightHTML = '<p><a href="'+ jsonObject.broadcasts[i].url +'" class="el-link">' + jsonObject.broadcasts[i].title + '<br />' + jsonObject.broadcasts[i].publication_date + '</a></p></div>';
+      $('#podcast'+i+' .el-data').attr('podcast-url', jsonObject.broadcasts[i].audio_file_name);
+      $('#podcast'+i+' .el-bt-img').attr('href', jsonObject.broadcasts[i].url);      
+      $('#podcast'+i+' .el-img').attr('src', jsonObject.broadcasts[i].avatar_file_name);
+      $('#podcast'+i+' .el-link').html(jsonObject.broadcasts[i].title + '<br />' + jsonObject.broadcasts[i].publication_date);
+      $('#podcast'+i+' .el-link').attr('href', jsonObject.broadcasts[i].url);      
       
 
-      strLastFavouriteBroadcastsHTML = strLastFavouriteBroadcastsHTML + '<div class="list-el"> <div class="el-header"> ' + strLastFavouriteBroadcastsItemPlayHTML + strLastFavouriteBroadcastsItemLeftHTML + strLastFavouriteBroadcastsItemRightHTML + ' </div>  <div id="podcast_player_container'+ jsonObject.broadcasts[i].id +'" class="audio_container"></div> </div>';
+      /* Kod HTML z avatarem audycji  */      
+      //var strLastFavouriteBroadcastsItemLeftHTML = '<a href="'+ jsonObject.broadcasts[i].url +'" class="el-bt-img"><img src="'+jsonObject.broadcasts[i].avatar_file_name+'" class="el-img" border="0" /></a>';
+
+      /* Kod HTML z tytułem i datą audycji */
+      //var strLastFavouriteBroadcastsItemRightHTML = '<p><a href="'+ jsonObject.broadcasts[i].url +'" class="el-link">' + jsonObject.broadcasts[i].title + '<br />' + jsonObject.broadcasts[i].publication_date + '</a></p></div>';
+
+      //strLastFavouriteBroadcastsHTML = strLastFavouriteBroadcastsItemLeftHTML + strLastFavouriteBroadcastsItemRightHTML;
+
+      //var lastFavouriteBroadcast = document.getElementById('podcast'+i);
+      //lastFavouriteBroadcast.innerHTML = strLastFavouriteBroadcastsHTML;
     }
-
-
-    var lastFavouriteBroadcasts = document.getElementById('lastFavouriteBroadcasts');
-    //lastFavouriteBroadcasts.innerHTML = strLastFavouriteBroadcasts;
-    lastFavouriteBroadcasts.innerHTML = strLastFavouriteBroadcastsHTML;
 
 });
 

@@ -3,61 +3,10 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">        
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
-
+        <!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>-->
+        <script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="panel_scripts.js"></script>
         <link href="style.css" rel="stylesheet" />
-
-        <script type="text/javascript">
-
-            function playOnlineStream() {
-                //$("#player").html('<object data="http://audio.radiownet.pl:8000/stream" style="width:100%; height:40px;"></object>');
-
-                audioInterfaceState();
-
-                $("#online_stream_player_container").html('<audio id="online" class="audio" controls autoplay preload="none"><source id="wnetPlayer_src" src="http://audio.radiownet.pl:8000/stream">Twoja przeglądarka nie obsługuje strumienia. Zaktualizuj przeglądarkę do nowszej wersji.</audio>');
-                $("#online_stream_player_container").show();
-
-            }
-
-
-            function playOnlinePodcast(url, id) {
-                //$("#player").html('<object data="'+url+'" style="width:100%; height:40px;"></object>');
-
-                audioInterfaceState();
-
-                $("#podcast_player_container"+id).html('<audio id="podcast'+id+'" class="audio" controls autoplay preload="none"><source id="wnetPlayer_src" src="'+url+'">Twoja przeglądarka nie obsługuje strumienia. Zaktualizuj przeglądarkę do nowszej wersji.</audio>');
-                $("#podcast_player_container"+id).show();
-
-            }
-
-            function audioInterfaceState() {
-
-                $( ".audio_container" ).each(function( index ) {
-                    $( this ).html('');
-                    $( this ).hide();
-                });
-
-            }
-
-            function playInterfaceState(activeItem) {
-                var strItemDefaultBackgroundImage1 = 'url("el-bg.jpg")';
-                var strItemDefaultBackgroundImage2 = 'url("play.png")';
-
-
-                $( ".el-bt-bg" ).each(function( index ) {
-                    $( this ).css('background-image', strItemDefaultBackgroundImage1);
-
-                    $( this ).children('.el-bt').css('background-image', strItemDefaultBackgroundImage2);
-
-                });                
-
-                activeItem.css('background-image', 'url("el-first-bg.jpg")');
-                activeItem.children('.el-bt').css('background-image', 'url("play_down.png")');
-                //alert(activeItem);
-
-            }
-
-    </script>
 
     </head>
 
@@ -89,7 +38,38 @@
                         <p>Poranki WNET</p>
                     </div>
 
-                    <div id="lastFavouriteBroadcasts"> </div>
+                    <div id="lastFavouriteBroadcasts">
+                        <div class="list-el">                            
+                            <div class="el-header" id="podcast0">
+                                <div class="el-data" podcast-url=""></div>
+                                <div class="el-bt-bg" podcast-id="0" onclick="playOnlinePodcast( $(this) ); playInterfaceState( $(this) );" title="Posłuchaj teraz"><div class="el-bt"></div></div>                                
+                                <a href="" class="el-bt-img"><img src="" class="el-img" border="0" /></a>
+                                <p><a href="" class="el-link">...</a></p>
+                            </div>
+                            <div id="podcast_player_container0" class="audio_container"></div>
+                        </div>
+
+                        <div class="list-el">                            
+                            <div class="el-header" id="podcast1">
+                                <div class="el-data" podcast-url=""></div>
+                                <div class="el-bt-bg" podcast-id="1" onclick="playOnlinePodcast( $(this) ); playInterfaceState( $(this) );" title="Posłuchaj teraz"><div class="el-bt"></div></div>
+                                <a href="" class="el-bt-img"><img src="" class="el-img" border="0" /></a>                                
+                                <p><a href="" class="el-link">...</a></p>
+                            </div>
+                            <div id="podcast_player_container1" class="audio_container"></div>
+                        </div>
+
+                        <div class="list-el">                            
+                            <div class="el-header" id="podcast2">
+                                <div class="el-data" podcast-url=""></div>
+                                <div class="el-bt-bg" podcast-id="2" onclick="playOnlinePodcast( $(this) ); playInterfaceState( $(this) );" title="Posłuchaj teraz"><div class="el-bt"></div></div>
+                                <a href="" class="el-bt-img"><img src="" class="el-img" border="0" /></a>
+                                <p><a href="" class="el-link">...</a></p>
+                            </div>
+                            <div id="podcast_player_container2" class="audio_container"></div>
+                        </div>
+                    </div>
+
 
                     <!--<div class="list-el">
                         <div class="el-header">
