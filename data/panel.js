@@ -1,21 +1,27 @@
 /** Wypełnia kod HTML panelu informacjami dotyczącymi aktualnej i kolejnej audycji */
 self.port.on('updateCurrentBroadcastInfo', function (strCurrentBroadcastInfo) {
 
-	  var jsonObject = JSON.parse(strCurrentBroadcastInfo);    
-
-    //var currentBroadCastInfo = document.getElementById('currentBroadCastInfo');
-    //currentBroadCastInfo.innerHTML = jsonObject.broadcasts[0].title;
-    $('#currentBroadCastInfo').text(jsonObject.broadcasts[0].title);
-    //var currentBroadCastStartFormatted = document.getElementById('currentBroadCastStartFormatted');    
-    //currentBroadCastStartFormatted.innerHTML = jsonObject.broadcasts[0].start_formatted;
-    $('#currentBroadCastStartFormatted').text(jsonObject.broadcasts[0].start_formatted);
-
-    //var nextBroadCastInfo = document.getElementById('nextBroadCastInfo');
-    //nextBroadCastInfo.innerHTML = jsonObject.broadcasts[1].title;
-    $('#nextBroadCastInfo').text(jsonObject.broadcasts[1].title);
-    //var nextBroadCastStartFormatted = document.getElementById('nextBroadCastStartFormatted');
-    //nextBroadCastStartFormatted.innerHTML = jsonObject.broadcasts[1].start_formatted;
-    $('#nextBroadCastStartFormatted').text(jsonObject.broadcasts[1].start_formatted);
+	  var jsonObject = JSON.parse(strCurrentBroadcastInfo);
+    
+    
+    if(jsonObject.broadcasts[0] == null) {
+      $('.list-el list-el-first').hide();
+      return false;
+    }
+    else {
+      $('#currentBroadCastInfo').text(jsonObject.broadcasts[0].title);    
+      $('#currentBroadCastStartFormatted').text(jsonObject.broadcasts[0].start_formatted);
+      $('.list-el list-el-first').show();
+    }
+    
+    if(jsonObject.broadcasts[1] == null) {
+      $('.el-first-content').hide();
+    }
+    else {
+      $('.el-first-content').show();
+      $('#nextBroadCastInfo').text(jsonObject.broadcasts[1].title);    
+      $('#nextBroadCastStartFormatted').text(jsonObject.broadcasts[1].start_formatted);      
+    }
 
 });
 
@@ -54,27 +60,20 @@ self.port.on('updateLastFavouriteBroadcasts', function (strLastFavouriteBroadcas
     var strLastFavouriteBroadcastsHTML = '';    
     for (i=0; i<3; i++) {
 
-      /* Kod HTML interfejse uruchamiajacego podcast audycji */      
-      //var strLastFavouriteBroadcastsItemPlayHTML = '<div class="el-bt-bg" podcast-id="1" onclick="playOnlinePodcast( $(this) ); playInterfaceState( $(this) );" title="Posłuchaj teraz"><div class="el-bt"></div></div>';
-      //var strLastFavouriteBroadcastsItemPlayHTML = '<div id="podcast_data'+i+'" podcast-url="'++'"></div>';
+      if(jsonObject.broadcasts[i] != null) {
+        $('#podcast-list-el'+i).show();        
+      }
+      else {
+        $('#podcast-list-el'+i).hide();
+        continue;  
+      }      
 
       $('#podcast'+i+' .el-data').attr('podcast-url', jsonObject.broadcasts[i].audio_file_name);
       $('#podcast'+i+' .el-bt-img').attr('href', jsonObject.broadcasts[i].url);      
       $('#podcast'+i+' .el-img').attr('src', jsonObject.broadcasts[i].avatar_file_name);
       $('#podcast'+i+' .el-link').html(jsonObject.broadcasts[i].title + '<br />' + jsonObject.broadcasts[i].publication_date);
-      $('#podcast'+i+' .el-link').attr('href', jsonObject.broadcasts[i].url);      
+      $('#podcast'+i+' .el-link').attr('href', jsonObject.broadcasts[i].url);
       
-
-      /* Kod HTML z avatarem audycji  */      
-      //var strLastFavouriteBroadcastsItemLeftHTML = '<a href="'+ jsonObject.broadcasts[i].url +'" class="el-bt-img"><img src="'+jsonObject.broadcasts[i].avatar_file_name+'" class="el-img" border="0" /></a>';
-
-      /* Kod HTML z tytułem i datą audycji */
-      //var strLastFavouriteBroadcastsItemRightHTML = '<p><a href="'+ jsonObject.broadcasts[i].url +'" class="el-link">' + jsonObject.broadcasts[i].title + '<br />' + jsonObject.broadcasts[i].publication_date + '</a></p></div>';
-
-      //strLastFavouriteBroadcastsHTML = strLastFavouriteBroadcastsItemLeftHTML + strLastFavouriteBroadcastsItemRightHTML;
-
-      //var lastFavouriteBroadcast = document.getElementById('podcast'+i);
-      //lastFavouriteBroadcast.innerHTML = strLastFavouriteBroadcastsHTML;
     }
 
 });
